@@ -25,14 +25,15 @@ Configuração do postgres:
 	\password postgres
 	Digite seu password
 	\q
+	
+
+Descomentar e alterar o parâmetro Listen_addreses='localhost por:
 	nano /etc/postgresql/9.4/main/postgresql.conf
-
-Aterar o seguinte parâmetro por:
-
 	listen_addresses = '*'    
+	
+Permitir o endereço da sua rede e reiniciar serviço do postgres:
+	
 	nano /etc/postgresql/9.1/main/pg_hba.conf
-Adicionar a seguinte linha com endereço da sua rede:
-
 	host    all             postgres        192.168.0.0/24          md5
 	/etc/init.d/postgresql restart
 
