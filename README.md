@@ -1,11 +1,11 @@
 # Postgis+Mapserver
 Máquina virtual Debian 8.2 Amd64
 
-PASSO 0 . INSTALAR DEPENDÊNCIAS PARA COMPILAÇÃO
+# INSTALAR DEPENDÊNCIAS PARA COMPILAÇÃO
 
 	apt-get install build-essential make gcc linux-headers-$(uname -r) cmake
 
-PASSO 1. INSTALAÇÃO DO POSTGRESQL
+# INSTALAÇÃO DO POSTGRESQL
 
 	apt-get install postgresql-9.4 postgresql-server-dev-9.4 libxml2-dev libproj-dev libjson0-dev libgeos-dev xsltproc docbook-xsl 	docbook-mathml libgdal-dev pgadmin3
 	wget http://download.osgeo.org/postgis/source/postgis-2.0.7.tar.gz
@@ -37,7 +37,7 @@ Permitir o endereço da sua rede e reiniciar serviço do postgres:
 	host    all             postgres        192.168.0.0/24          md5
 	/etc/init.d/postgresql restart
 
-PASSO 2. INSTALACÃO DO POSTGIS
+# INSTALACÃO DO POSTGIS
 
 	wget http://download.osgeo.org/postgis/source/postgis-2.0.7.tar.gz
 	tar xfz postgis-2.0.7.tar.gz
@@ -61,7 +61,7 @@ Criar base de dados:
 	psql -d template_postgis -f /usr/share/postgresql/9.4/contrib/postgis-2.0/rtpostgis.sql
 	psql -d template_postgis -f /usr/share/postgresql/9.4/contrib/postgis-2.0/raster_comments.sql
 
-PASSO 3. APACHE & PHP
+# INSTALAÇÕ DE APACHE & PHP
 
 Instalação do apache e módulos:
 
@@ -73,11 +73,11 @@ Instalação do apache e módulos:
 	a2enmod include
 	/etc/init.d/apache2 restart
 
-intalação do php:
+Instalação do php:
 
 	apt-get install php5 php-pear php5-mysql php-apc php5-curl php5-pgsql php5-dev php5-xsl apache2-prefork-dev
 
-PASSO 4. INSTALAÇÃO DE MAPSERVER 
+# INSTALAÇÃO DE MAPSERVER 
 
 Prequisitos de instalação:
 
@@ -93,7 +93,7 @@ Compilação e instalação:
 	cmake -DCMAKE_INSTALL_PREFIX=/usr/lib -DCMAKE_PREFIX_PATH=/usr/local/pgsql/92:/usr/local:/usr -DWITH_CLIENT_WFS=ON -DWITH_CLIENT_WMS=ON -DWITH_CURL=ON -DWITH_SOS=ON -DWITH_PHP=ON -DWITH_PERL=0 -DWITH_RUBY=0 -DWITH_JAVA=0 -DWITH_CSHARP=0 -DWITH_PYTHON=0 -DWITH_MSSQL2008=0 -DWITH_FRIBIDI=0 -DWITH_HARFBUZZ=0 -DWITH_ORACLESPATIAL=0 -DWITH_SVGCAIRO=0 ../ > ../configure.out.txt
 
 
-PASSO 5. ADICIONAR AO VIRTUAL HOST DO APACHE
+# CRIAR VIRTUAL HOST 
 
 	nano /etc/sites-avaibles/mapserver.conf
 	<VirtualHost *:80>
@@ -113,14 +113,15 @@ Habiitar host virtual:
 
 	a2ensite mapserver.conf 
 
-PASSO 6. CARREGAR DADOS NO POSTGIS
+# CARREGAR DADOS NO POSTGIS
+
 Dados do INEGI: https://www.inegi.org.mx/temas/mg/default.html#Descargas
 
 	wget\ http://internet.contenidos.inegi.org.mx/contenidos/Productos/prod_serv/contenidos/espanol/bvinegi/productos/geografia/marc_geo/889463084105_s.zip889463084105_s.zip
 	unzip 889463084105_s.zip
 	shp2pgsql -s 4326 -W "latin1" areas_geoestadisticas_basicas.shp public.mge2015 | psql -h localhost -d geodb -U postgres
 
-PASSO 7. CRIAR UM ARQUIVO MAPFILE
+# CRIAR UM ARQUIVO MAPFILE
 
 	mkdir /var/www/maps
 	chown www-data:www-data /var/www/maps/
