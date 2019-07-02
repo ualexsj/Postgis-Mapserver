@@ -1,11 +1,11 @@
-# Postgis-Mapserver
+# Postgis+Mapserver
 Máquina virtual Debian 8.2 Amd64
 
-PASSO 0 .INSTALAR DEPENDÊNCIAS PARA COMPILAÇÃO
+PASSO 0 . INSTALAR DEPENDÊNCIAS PARA COMPILAÇÃO
 
 	apt-get install build-essential make gcc linux-headers-$(uname -r) cmake
 
-PASSO 1.INSTALAÇÃO DO POSTGRESQL
+PASSO 1. INSTALAÇÃO DO POSTGRESQL
 
 	apt-get install postgresql-9.4 postgresql-server-dev-9.4 libxml2-dev libproj-dev libjson0-dev libgeos-dev xsltproc docbook-xsl 	docbook-mathml libgdal-dev pgadmin3
 	wget http://download.osgeo.org/postgis/source/postgis-2.0.7.tar.gz
@@ -94,7 +94,7 @@ Compilação e instalação:
 
 PASSO 5. ADICIONAR AO VIRTUAL HOST DO APACHE
 
-nano /etc/sites-avaibles/mapserver.conf
+	nano /etc/sites-avaibles/mapserver.conf
 	<VirtualHost *:80>
 	    DocumentRoot "/var/www/"
 	    ServerName www.example.com
