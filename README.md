@@ -61,7 +61,7 @@ Criar base de dados:
 	psql -d template_postgis -f /usr/share/postgresql/9.4/contrib/postgis-2.0/rtpostgis.sql
 	psql -d template_postgis -f /usr/share/postgresql/9.4/contrib/postgis-2.0/raster_comments.sql
 
-# INSTALAÇÕ DE APACHE & PHP
+# INSTALAÇÃO DE APACHE & PHP
 
 Instalação do apache e módulos:
 
