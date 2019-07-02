@@ -1,14 +1,13 @@
 # Postgis-Mapserver
-Postgis + Mapserver
 Máquina virtual Debian 8.2 Amd64
 
-PASSO 0 . INSTALAR DEPENDÊNCIAS PARA COMPILAÇÃO
+PASSO 0 .INSTALAR DEPENDÊNCIAS PARA COMPILAÇÃO
 
 	apt-get install build-essential make gcc linux-headers-$(uname -r) cmake
 
-PASSO 1. INSTALAÇÃO DO POSTGRESQL
+PASSO 1.INSTALAÇÃO DO POSTGRESQL
 
-	apt-get install postgresql-9.4 postgresql-server-dev-9.4 libxml2-dev libproj-dev libjson0-dev libgeos-dev xsltproc docbook-xsl docbook-mathml libgdal-dev pgadmin3
+	apt-get install postgresql-9.4 postgresql-server-dev-9.4 libxml2-dev libproj-dev libjson0-dev libgeos-dev xsltproc docbook-xsl 	docbook-mathml libgdal-dev pgadmin3
 	wget http://download.osgeo.org/postgis/source/postgis-2.0.7.tar.gz
 	tar xfz postgis-2.0.7.tar.gz
 	cd postgis-2.0.7
@@ -18,7 +17,7 @@ PASSO 1. INSTALAÇÃO DO POSTGRESQL
 	ldconfig
 	make comments-install
 
-configuração do postgres:
+Configuração do postgres:
 
 	sudo su
 	su - postgres
@@ -29,11 +28,12 @@ configuração do postgres:
 	nano /etc/postgresql/9.4/main/postgresql.conf
 
 Aterar o seguinte parâmetro por:
+
 	listen_addresses = '*'    
 	nano /etc/postgresql/9.1/main/pg_hba.conf
 Adicionar a seguinte linha com endereço da sua rede:
-	host    all             postgres        192.168.0.0/24          md5
 
+	host    all             postgres        192.168.0.0/24          md5
 	/etc/init.d/postgresql restart
 
 PASSO 2. INSTALACÃO DO POSTGIS
