@@ -116,6 +116,7 @@ Habiitar host virtual:
 # CARREGAR DADOS NO POSTGIS
 
 Dados do INEGI: https://www.inegi.org.mx/temas/mg/default.html#Descargas
+Portal Brasileiro de dados abertos: http://dados.gov.br/dataset
 
 	wget\ http://internet.contenidos.inegi.org.mx/contenidos/Productos/prod_serv/contenidos/espanol/bvinegi/productos/geografia/marc_geo/889463084105_s.zip889463084105_s.zip
 	unzip 889463084105_s.zip
